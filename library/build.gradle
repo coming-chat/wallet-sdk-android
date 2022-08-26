@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
+}
+
+def getVersionName = { ->
+    return getGitTagName() ?: getGitShortSHA() ?: getCurrentTime()
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 31
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+static def getCurrentTime() {
+    return new Date().format("yyyyMMddHHmm", TimeZone.getTimeZone("GMT+08:00"))
+}
+
+static def getGitShortSHA() {
+    return 'git rev-parse --short HEAD'.execute().text.trim()
+}
+
+static def getGitTagName() {
+    return 'git describe --tags'.execute().text.trim()
+}
+
+dependencies {
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'org.comingchat.android'
+            artifactId = 'wallet-sdk'
+            version getVersionName()
+            artifact("libs/wallet.aar")
+        }
+    }
+
+    repositories {
+        maven {
+            // config repo and user info
+            url "https://maven.pkg.github.com/coming-chat/wallet-sdk-android"
+            credentials {
+                username = System.getenv("GPR_USER") ?: project.findProperty("gpr.user")
+                password = System.getenv("GPR_API_KEY") ?: project.findProperty("gpr.key")
+            }
+        }
+    }
+}
