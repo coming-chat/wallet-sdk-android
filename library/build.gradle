@@ -48,7 +48,14 @@ publishing {
             groupId = 'org.comingchat.android'
             artifactId = 'wallet-sdk'
             version getVersionName()
+            artifact("libs/wallet-sources.jar") {
+                classifier "sources"
+            }
             artifact("libs/wallet.aar")
+            pom {
+                url = "https://github.com/coming-chat//wallet-sdk-android"
+                description = "comingchat wallet sdk for android."
+            }
         }
     }
 

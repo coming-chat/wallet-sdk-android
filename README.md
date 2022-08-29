@@ -17,6 +17,8 @@ allprojects {
 ```
 implementation("com.github.coming-chat:wallet-sdk-android:Tag")
 ```
+[![Release](https://jitpack.io/v/coming-chat/wallet-sdk-android.svg)](https://jitpack.io/#coming-chat/wallet-sdk-android)
+
 
 ## Others
 
