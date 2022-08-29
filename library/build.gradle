@@ -53,7 +53,7 @@ publishing {
             }
             artifact("libs/wallet.aar")
             pom {
-                url = "https://github.com/coming-chat//wallet-sdk-android"
+                url = "https://github.com/coming-chat/wallet-sdk-android"
                 description = "comingchat wallet sdk for android."
             }
         }
