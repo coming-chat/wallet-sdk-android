@@ -43,8 +43,8 @@ dependencies {}
 publishing {
     publications {
         release(MavenPublication) {
-            groupId = 'org.comingchat.android'
-            artifactId = 'wallet-sdk'
+            groupId = 'com.github.coming-chat'
+            artifactId = 'wallet-sdk-android'
             version getVersionName()
             artifact("libs/wallet-sources.jar") {
                 classifier "sources"
