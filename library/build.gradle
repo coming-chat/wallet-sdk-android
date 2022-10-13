@@ -4,8 +4,7 @@ plugins {
     id 'maven-publish'
 }
 
-def getVersionName = { ->
-    return getGitTagName() ?: getGitShortSHA() ?: getCurrentTime()
+def getVersionName = { -> return getGitTagName() ?: getGitShortSHA() ?: getCurrentTime()
 }
 
 android {
@@ -39,8 +38,7 @@ static def getGitTagName() {
     return 'git describe --tags'.execute().text.trim()
 }
 
-dependencies {
-}
+dependencies {}
 
 publishing {
     publications {
@@ -62,10 +60,11 @@ publishing {
     repositories {
         maven {
             // config repo and user info
+            name = "GitHubPackages"
             url "https://maven.pkg.github.com/coming-chat/wallet-sdk-android"
             credentials {
-                username = System.getenv("GPR_USER") ?: project.findProperty("gpr.user")
-                password = System.getenv("GPR_API_KEY") ?: project.findProperty("gpr.key")
+                username = System.getenv("GITHUB_USER") ?: project.findProperty("gpr.user")
+                password = System.getenv("GITHUB_TOKEN") ?: project.findProperty("gpr.key")
             }
         }
     }
