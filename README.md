@@ -2,7 +2,7 @@
 
 
 [![Publish package CI](https://github.com/coming-chat/wallet-sdk-android/actions/workflows/gradle-publish.yml/badge.svg)](https://github.com/coming-chat/wallet-sdk-android/actions/workflows/gradle-publish.yml)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/coming-chat/wallet-sdk-android)
+![GitHub release (latest by date)](https://img.shields.io/github/v/tag/coming-chat/wallet-sdk-android)
 
 Android releases are hosted on [GitHub packages](https://github.com/coming-chat/wallet-sdk-android/packages/1670316), you need to add GitHub access token to install it. Please checkout [this installation guide](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry).
 
